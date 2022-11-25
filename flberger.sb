@@ -1,0 +1,60 @@
+# %%--- [markdown]
+# properties:
+#   locked: true
+# ---%%
+# Starboard-Beispielnotebook
+
+**Dieses Notebook wird direkt von github geladen:**
+
+[https://github.com/FUB-HCC/starboard-test/blob/main/flberger.sb](https://github.com/FUB-HCC/starboard-test/blob/main/flberger.sb)
+
+Dieses Notebook läuft direkt im Browser und braucht keine serverseitige Installation.
+# %%--- [markdown]
+# properties:
+#   locked: true
+# ---%%
+Beispiel für einen Chart.js-Graphen:
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+#   locked: true
+# ---%%
+// Chart.js creates a global `Chart` object when it is loaded.
+await import("https://unpkg.com/chart.js@2.9.3/dist/Chart.bundle.min.js");
+
+const canvas = document.createElement("canvas");
+
+var xyValues = [
+  {x:50, y:7},
+  {x:60, y:8},
+  {x:70, y:8},
+  {x:80, y:9},
+  {x:90, y:9},
+  {x:100, y:9},
+  {x:110, y:10},
+  {x:120, y:11},
+  {x:130, y:14},
+  {x:140, y:14},
+  {x:150, y:15}
+];
+
+new Chart(canvas.getContext("2d"), {
+  type: "line",
+  data: {
+    datasets: [{
+      pointRadius: 4,
+      pointBackgroundColor: "rgb(0,0,255)",
+      data: xyValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      xAxes: [{ticks: {min: 40, max:160}}],
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
+
+canvas
